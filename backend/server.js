@@ -44,7 +44,12 @@ app.use('/api/fish-groups',            require('./routes/fishGroups'));
 app.use('/api/feed-inventory',         require('./routes/feedInventory'));
 app.use('/api/treatments',             require('./routes/treatments'));
 app.use('/api/mortality-logs',         require('./routes/mortalityLogs'));
+// Mount the batch sensor ingest BEFORE the CRUD router so /ingest doesn't
+// get caught by the CRUD's GET /:id route.
+app.use('/api/water-quality/ingest',    require('./routes/waterQualityIngest'));
 app.use('/api/water-quality',          require('./routes/waterQuality'));
+app.use('/api/feeding-schedules',      require('./routes/feedingSchedules'));
+app.use('/api/regulatory-reports',     require('./routes/regulatoryReports'));
 app.use('/api/biomass-estimates',      require('./routes/biomassEstimates'));
 app.use('/api/sea-lice-counts',        require('./routes/seaLiceCounts'));
 app.use('/api/vessels',                require('./routes/vessels'));

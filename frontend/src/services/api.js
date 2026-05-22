@@ -121,6 +121,7 @@ export const predatorIncidentsApi     = crud('predator-incidents');
 export const environmentalImpactsApi  = crud('environmental-impacts');
 export const vendorsApi               = crud('vendors');
 export const auditLogApi              = crud('audit-log');
+export const feedingSchedulesApi      = crud('feeding-schedules');
 
 // Dashboard
 export const getDashboardStats = () => request('/dashboard');
@@ -147,6 +148,35 @@ export const aiCustomerQualityReport = (body) => request('/ai/customer-quality-r
 export const aiCertificationReadiness= (body) => request('/ai/certification-readiness',   { method: 'POST', body: JSON.stringify(body || {}) });
 export const aiVendorQualityScore    = (body) => request('/ai/vendor-quality-score',      { method: 'POST', body: JSON.stringify(body || {}) });
 export const aiMarketPriceForecast   = (body) => request('/ai/market-price-forecast',     { method: 'POST', body: JSON.stringify(body || {}) });
+
+// Apply pass 7 - backlog AI endpoints
+export const aiFishHealthDiagnostic  = (body) => request('/ai/fish-health-diagnostic',    { method: 'POST', body: JSON.stringify(body || {}) });
+export const aiBiomassForecast       = (body) => request('/ai/biomass-forecast',          { method: 'POST', body: JSON.stringify(body || {}) });
+export const aiHarvestTiming         = (body) => request('/ai/harvest-timing',            { method: 'POST', body: JSON.stringify(body || {}) });
+export const aiMortalityPredict      = (body) => request('/ai/mortality-predict',         { method: 'POST', body: JSON.stringify(body || {}) });
+export const aiSustainabilityScore   = (body) => request('/ai/sustainability-score',      { method: 'POST', body: JSON.stringify(body || {}) });
+export const aiPenCameraAnalyze      = (body) => request('/ai/pen-camera-analyze',        { method: 'POST', body: JSON.stringify(body || {}) });
+export const aiEscapeDetect          = (body) => request('/ai/escape-detect',             { method: 'POST', body: JSON.stringify(body || {}) });
+export const aiStockingDensityRisk   = (body) => request('/ai/stocking-density-risk',     { method: 'POST', body: JSON.stringify(body || {}) });
+
+// Sensor batch ingest (water quality)
+export const ingestWaterQuality = (body) => request('/water-quality/ingest', { method: 'POST', body: JSON.stringify(body || {}) });
+export const getWaterQualityIngestLog = (limit = 50) => request(`/water-quality/ingest/log?limit=${limit}`);
+
+// Regulatory report exports - return raw text/csv via fetch since `request()` parses JSON.
+export const listRegulatoryReports = () => request('/regulatory-reports');
+export const downloadRegulatoryReport = async (slug, params = {}) => {
+  const token = getToken();
+  const qs = new URLSearchParams(params).toString();
+  const res = await fetch(`${API_BASE}/regulatory-reports/${slug}${qs ? `?${qs}` : ''}`, {
+    headers: { ...(token ? { Authorization: `Bearer ${token}` } : {}) },
+  });
+  if (!res.ok) {
+    const data = await res.json().catch(() => ({}));
+    throw new Error(data.error || `Report failed (${res.status})`);
+  }
+  return res.text();
+};
 
 // AI history
 export const getAIHistory = (feature, limit = 25) => {

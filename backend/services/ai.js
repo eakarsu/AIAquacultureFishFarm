@@ -515,6 +515,161 @@ async function marketPriceForecast(species, horizonWeeks = 12, context = {}) {
   return safeJsonParse(r, { summary: typeof r === 'string' ? r : 'No response', forecast: [] });
 }
 
+// ──────────────────────────────────────────────────────────────
+// AI Feature 17: Fish Health Diagnostic (symptoms + image refs)
+// ──────────────────────────────────────────────────────────────
+async function fishHealthDiagnostic(ctx = {}) {
+  const sys = `${SYSTEM_PROMPT} Diagnose fish-health issues from clinical symptoms, water quality and (referenced) pen-camera imagery. Return strict JSON:
+{
+  "pen_id": string,
+  "differential_diagnosis": [{
+    "pathogen": string,
+    "confidence": number,
+    "evidence": [string],
+    "typical_signs": [string]
+  }],
+  "primary_suspect": string,
+  "urgency": "routine"|"elevated"|"urgent"|"critical",
+  "recommended_diagnostics": [string],
+  "isolation_required": boolean,
+  "reportable_to_regulator": boolean,
+  "summary": string
+}`;
+  const usr = `Diagnostic context:\n${JSON.stringify(ctx, null, 2)}`;
+  const r = await callOpenRouter(sys, usr);
+  return safeJsonParse(r, { summary: typeof r === 'string' ? r : 'No response', differential_diagnosis: [] });
+}
+
+// ──────────────────────────────────────────────────────────────
+// AI Feature 18: Biomass Forecast (N-week projection)
+// ──────────────────────────────────────────────────────────────
+async function biomassForecast(ctx = {}) {
+  const sys = `${SYSTEM_PROMPT} Project biomass per pen over N weeks using historical estimates, current group size, water temperature and feed plan. Return strict JSON:
+{
+  "pen_id": string,
+  "horizon_weeks": number,
+  "projection": [{ "week_start": string, "projected_total_kg": number, "projected_avg_g": number, "confidence": number }],
+  "growth_rate_pct_per_week": number,
+  "expected_harvest_window": string,
+  "risk_factors": [string],
+  "summary": string
+}`;
+  const usr = `Forecast context:\n${JSON.stringify(ctx, null, 2)}`;
+  const r = await callOpenRouter(sys, usr);
+  return safeJsonParse(r, { summary: typeof r === 'string' ? r : 'No response', projection: [] });
+}
+
+// ──────────────────────────────────────────────────────────────
+// AI Feature 19: Harvest Timing (per-pen optimal date)
+// ──────────────────────────────────────────────────────────────
+async function harvestTiming(ctx = {}) {
+  const sys = `${SYSTEM_PROMPT} Recommend per-pen optimal harvest date balancing growth curve, market price forecast and regulatory windows. Return strict JSON:
+{
+  "pen_id": string,
+  "recommended_harvest_date": string,
+  "optimal_window": { "start": string, "end": string },
+  "expected_avg_weight_g_at_harvest": number,
+  "expected_price_per_kg_usd": number,
+  "regulatory_constraints": [string],
+  "tradeoffs": [{ "option": string, "pros": [string], "cons": [string] }],
+  "confidence": number,
+  "summary": string
+}`;
+  const usr = `Pen timing context:\n${JSON.stringify(ctx, null, 2)}`;
+  const r = await callOpenRouter(sys, usr);
+  return safeJsonParse(r, { summary: typeof r === 'string' ? r : 'No response', tradeoffs: [] });
+}
+
+// ──────────────────────────────────────────────────────────────
+// AI Feature 20: Mortality Predict (forward forecast)
+// ──────────────────────────────────────────────────────────────
+async function mortalityPredict(ctx = {}) {
+  const sys = `${SYSTEM_PROMPT} Forecast mortality risk over the next 7/14/30 days per pen from recent mortality logs, water quality, sea lice and treatments. Return strict JSON:
+{
+  "per_pen_risk": [{
+    "pen_id": string,
+    "expected_mortality_7d": number,
+    "expected_mortality_14d": number,
+    "expected_mortality_30d": number,
+    "risk_level": "low"|"medium"|"high"|"critical",
+    "drivers": [string]
+  }],
+  "farm_level_outlook": string,
+  "recommended_preventive_actions": [string],
+  "summary": string
+}`;
+  const usr = `Mortality forecast context:\n${JSON.stringify(ctx, null, 2)}`;
+  const r = await callOpenRouter(sys, usr);
+  return safeJsonParse(r, { summary: typeof r === 'string' ? r : 'No response', per_pen_risk: [] });
+}
+
+// ──────────────────────────────────────────────────────────────
+// AI Feature 21: Sustainability Score (ASC/BAP composite)
+// ──────────────────────────────────────────────────────────────
+async function sustainabilityScore(ctx = {}) {
+  const sys = `${SYSTEM_PROMPT} Compute an ASC/BAP-aligned composite sustainability score across farms covering carbon, feed, waste, welfare, escapes and chemicals. Return strict JSON:
+{
+  "scope": string,
+  "overall_score": number,
+  "rating": "AAA"|"AA"|"A"|"B"|"C"|"D",
+  "dimensions": [{
+    "dimension": "carbon"|"feed"|"waste"|"welfare"|"escapes"|"chemicals",
+    "score": number,
+    "weight": number,
+    "notes": string
+  }],
+  "improvement_priorities": [{ "action": string, "lift_pts": number, "lead_time_days": number }],
+  "asc_aligned": boolean,
+  "bap_aligned": boolean,
+  "summary": string
+}`;
+  const usr = `Sustainability context:\n${JSON.stringify(ctx, null, 2)}`;
+  const r = await callOpenRouter(sys, usr);
+  return safeJsonParse(r, { summary: typeof r === 'string' ? r : 'No response', dimensions: [] });
+}
+
+// ──────────────────────────────────────────────────────────────
+// AI Feature 22: Pen-Camera Frame Analyze (CV proxy via vision-capable LLM)
+// ──────────────────────────────────────────────────────────────
+async function penCameraAnalyze(ctx = {}) {
+  const sys = `${SYSTEM_PROMPT} Analyze a pen-camera frame description (or referenced image filenames) for net integrity, fouling, fish behavior, sea-lice visibility and escape risk. Return strict JSON:
+{
+  "pen_id": string,
+  "frame_refs": [string],
+  "net_integrity": { "score": number, "issues": [string] },
+  "fouling_score": number,
+  "fish_behavior": { "school_density": "low"|"medium"|"high", "swim_pattern": string, "stress_signals": [string] },
+  "visible_sea_lice_estimate_per_fish": number,
+  "escape_risk": "low"|"medium"|"high"|"critical",
+  "recommended_followups": [string],
+  "summary": string
+}`;
+  const usr = `Frame context:\n${JSON.stringify(ctx, null, 2)}`;
+  const r = await callOpenRouter(sys, usr);
+  return safeJsonParse(r, { summary: typeof r === 'string' ? r : 'No response', frame_refs: [] });
+}
+
+// ──────────────────────────────────────────────────────────────
+// AI Feature 23: Escape Detect (multi-signal fusion)
+// ──────────────────────────────────────────────────────────────
+async function escapeDetect(ctx = {}) {
+  const sys = `${SYSTEM_PROMPT} Fuse acoustic tag delta, sonar count delta and net-tension sensor signals to detect a potential fish escape from a net pen. Return strict JSON:
+{
+  "pen_id": string,
+  "escape_suspected": boolean,
+  "confidence": number,
+  "estimated_escaped_count": number,
+  "signals": [{ "source": "acoustic_tag"|"sonar"|"net_tension"|"camera", "delta": number, "direction": "up"|"down"|"flat", "note": string }],
+  "severity": "low"|"medium"|"high"|"critical",
+  "regulator_notification_required": boolean,
+  "immediate_actions": [string],
+  "summary": string
+}`;
+  const usr = `Escape detection context:\n${JSON.stringify(ctx, null, 2)}`;
+  const r = await callOpenRouter(sys, usr);
+  return safeJsonParse(r, { summary: typeof r === 'string' ? r : 'No response', signals: [] });
+}
+
 module.exports = {
   callOpenRouter,
   safeJsonParse,
@@ -534,4 +689,11 @@ module.exports = {
   certificationReadiness,
   vendorQualityScore,
   marketPriceForecast,
+  fishHealthDiagnostic,
+  biomassForecast,
+  harvestTiming,
+  mortalityPredict,
+  sustainabilityScore,
+  penCameraAnalyze,
+  escapeDetect,
 };

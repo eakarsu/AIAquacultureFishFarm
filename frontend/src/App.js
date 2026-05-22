@@ -33,6 +33,7 @@ import AITreatmentRecommendPage      from './pages/AITreatmentRecommendPage';
 import AIExecutiveBriefPage          from './pages/AIExecutiveBriefPage';
 import AIHarvestSchedulePage         from './pages/AIHarvestSchedulePage';
 import AIWaterQualityAnomalyPage     from './pages/AIWaterQualityAnomalyPage';
+import AIStockingDensityRiskPage     from './pages/AIStockingDensityRiskPage';
 import AIPredatorDeterrentPage       from './pages/AIPredatorDeterrentPage';
 import AIEnvironmentalRiskPage       from './pages/AIEnvironmentalRiskPage';
 import AIVesselShiftPage             from './pages/AIVesselShiftPage';
@@ -41,6 +42,18 @@ import AICustomerQualityPage         from './pages/AICustomerQualityPage';
 import AICertificationReadinessPage  from './pages/AICertificationReadinessPage';
 import AIVendorQualityPage           from './pages/AIVendorQualityPage';
 import AIMarketPriceForecastPage     from './pages/AIMarketPriceForecastPage';
+
+// Apply pass 7 - backlog AI + non-AI pages
+import AIFishHealthDiagnosticPage    from './pages/AIFishHealthDiagnosticPage';
+import AIBiomassForecastPage         from './pages/AIBiomassForecastPage';
+import AIHarvestTimingPage           from './pages/AIHarvestTimingPage';
+import AIMortalityPredictPage        from './pages/AIMortalityPredictPage';
+import AISustainabilityScorePage     from './pages/AISustainabilityScorePage';
+import AIPenCameraAnalyzePage        from './pages/AIPenCameraAnalyzePage';
+import AIEscapeDetectPage            from './pages/AIEscapeDetectPage';
+import FeedingSchedulesPage          from './pages/FeedingSchedulesPage';
+import WaterQualityIngestPage        from './pages/WaterQualityIngestPage';
+import RegulatoryReportsPage         from './pages/RegulatoryReportsPage';
 
 // Admin
 import WebhooksPage from './pages/WebhooksPage';
@@ -52,6 +65,9 @@ import LoginPage from './pages/LoginPage';
 import { getToken } from './services/api';
 
 import './App.css';
+
+import CodexCustomVizFeature from './pages/CodexCustomVizFeature';
+import CodexOperationsFeature from './pages/CodexOperationsFeature';
 
 function RequireAuth({ children }) {
   const location = useLocation();
@@ -69,6 +85,9 @@ function ShellRoutes() {
         <Topbar />
         <div style={{ padding: '24px 32px' }}>
           <Routes>
+        <Route path="/codex/custom-viz" element={<CodexCustomVizFeature />} />
+        <Route path="/codex/operations" element={<CodexOperationsFeature />} />
+
             <Route path="/" element={<Dashboard />} />
 
             <Route path="/farms"                  element={<FarmsPage />} />
@@ -98,6 +117,7 @@ function ShellRoutes() {
             <Route path="/ai/executive-brief"          element={<AIExecutiveBriefPage />} />
             <Route path="/ai/harvest-schedule"         element={<AIHarvestSchedulePage />} />
             <Route path="/ai/water-quality-anomaly"    element={<AIWaterQualityAnomalyPage />} />
+            <Route path="/ai/stocking-density-risk"    element={<AIStockingDensityRiskPage />} />
             <Route path="/ai/predator-deterrent-plan"  element={<AIPredatorDeterrentPage />} />
             <Route path="/ai/environmental-risk-brief" element={<AIEnvironmentalRiskPage />} />
             <Route path="/ai/vessel-shift-schedule"    element={<AIVesselShiftPage />} />
@@ -106,6 +126,18 @@ function ShellRoutes() {
             <Route path="/ai/certification-readiness"  element={<AICertificationReadinessPage />} />
             <Route path="/ai/vendor-quality-score"     element={<AIVendorQualityPage />} />
             <Route path="/ai/market-price-forecast"    element={<AIMarketPriceForecastPage />} />
+
+            {/* Apply pass 7 - backlog routes */}
+            <Route path="/ai/fish-health-diagnostic"   element={<AIFishHealthDiagnosticPage />} />
+            <Route path="/ai/biomass-forecast"         element={<AIBiomassForecastPage />} />
+            <Route path="/ai/harvest-timing"           element={<AIHarvestTimingPage />} />
+            <Route path="/ai/mortality-predict"        element={<AIMortalityPredictPage />} />
+            <Route path="/ai/sustainability-score"     element={<AISustainabilityScorePage />} />
+            <Route path="/ai/pen-camera-analyze"       element={<AIPenCameraAnalyzePage />} />
+            <Route path="/ai/escape-detect"            element={<AIEscapeDetectPage />} />
+            <Route path="/feeding-schedules"           element={<FeedingSchedulesPage />} />
+            <Route path="/water-quality-ingest"        element={<WaterQualityIngestPage />} />
+            <Route path="/regulatory-reports"          element={<RegulatoryReportsPage />} />
 
             <Route path="/webhooks" element={<WebhooksPage />} />
 

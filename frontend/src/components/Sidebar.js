@@ -9,9 +9,11 @@ const FARMS_LINKS = [
 ];
 
 const FEED_LINKS = [
-  { to: '/feed-inventory',    label: 'Feed Inventory' },
-  { to: '/biomass-estimates', label: 'Biomass Estimates' },
-  { to: '/water-quality',     label: 'Water Quality' },
+  { to: '/feed-inventory',     label: 'Feed Inventory' },
+  { to: '/feeding-schedules',  label: 'Feeding Schedules' },
+  { to: '/biomass-estimates',  label: 'Biomass Estimates' },
+  { to: '/water-quality',      label: 'Water Quality' },
+  { to: '/water-quality-ingest', label: 'Sensor Ingest' },
 ];
 
 const TREATMENTS_LINKS = [
@@ -35,23 +37,32 @@ const CUSTOMERS_LINKS = [
 const GOVERNANCE_LINKS = [
   { to: '/certifications',         label: 'Certifications' },
   { to: '/environmental-impacts',  label: 'Environmental Impacts' },
+  { to: '/regulatory-reports',     label: 'Regulatory Reports' },
   { to: '/audit-log',              label: 'Audit Log' },
 ];
 
 const AI_MONITORING_LINKS = [
   { to: '/ai/biomass-vision-estimate', label: 'AI - Biomass Vision' },
+  { to: '/ai/biomass-forecast',        label: 'AI - Biomass Forecast' },
   { to: '/ai/sea-lice-counts-classify',label: 'AI - Sea Lice Classify' },
   { to: '/ai/mortality-anomaly-detect',label: 'AI - Mortality Anomaly' },
+  { to: '/ai/mortality-predict',       label: 'AI - Mortality Predict' },
   { to: '/ai/water-quality-anomaly',   label: 'AI - Water Quality Anomaly' },
+  { to: '/ai/stocking-density-risk',   label: 'AI - Stocking Density Risk' },
+  { to: '/ai/pen-camera-analyze',      label: 'AI - Pen Camera Analyze' },
+  { to: '/ai/escape-detect',           label: 'AI - Escape Detect' },
   { to: '/ai/executive-brief',         label: 'AI - Executive Brief' },
 ];
 
 const AI_PLANNING_LINKS = [
   { to: '/ai/feed-conversion-optimize',label: 'AI - Feed Conversion' },
+  { to: '/ai/fish-health-diagnostic',  label: 'AI - Fish Health Diagnostic' },
   { to: '/ai/treatment-recommend',     label: 'AI - Treatment Recommend' },
   { to: '/ai/harvest-schedule',        label: 'AI - Harvest Schedule' },
+  { to: '/ai/harvest-timing',          label: 'AI - Harvest Timing' },
   { to: '/ai/predator-deterrent-plan', label: 'AI - Predator Deterrent' },
   { to: '/ai/environmental-risk-brief',label: 'AI - Environmental Risk' },
+  { to: '/ai/sustainability-score',    label: 'AI - Sustainability Score' },
   { to: '/ai/vessel-shift-schedule',   label: 'AI - Vessel Shift Schedule' },
   { to: '/ai/diver-safety-brief',      label: 'AI - Diver Safety Brief' },
   { to: '/ai/customer-quality-report', label: 'AI - Customer Quality' },

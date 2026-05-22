@@ -402,6 +402,178 @@ const SAMPLES = {
       values: { species: 'Yellowtail (Buri)', horizon_weeks: 12, notes: 'Japanese domestic plus US sushi-grade export demand.' },
     },
   ],
+
+  'fish-health-diagnostic': [
+    {
+      label: 'AGD suspect - PEN-SCO-001-P01',
+      values: { pen_id: 'PEN-SCO-001-P01', symptoms: 'Gill paleness, mucus patches, lethargy, surface gasping in mornings.', image_refs: ['camera/PEN-SCO-001-P01_2026-05-20_0700.jpg'], notes: 'Gill score 3 on 18% of sample, water temp 10.5C.' },
+    },
+    {
+      label: 'BKD investigation - PEN-CAN-002-P03',
+      values: { pen_id: 'PEN-CAN-002-P03', symptoms: 'Exophthalmia, kidney swelling on post-mortem, dark skin, lethargy.', image_refs: [], notes: 'Chinook cohort, 520 mortality in single day.' },
+    },
+    {
+      label: 'POMV suspect - PEN-AUS-001-P05',
+      values: { pen_id: 'PEN-AUS-001-P05', symptoms: 'Anemia, pale gills, splenomegaly on necropsy, scale loss.', image_refs: ['camera/PEN-AUS-001-P05_2026-05-19_1400.jpg'], notes: 'Macquarie Harbour, low-DO event 4d ago.' },
+    },
+    {
+      label: 'Sea bass Vibrio - PEN-TUR-001-P06',
+      values: { pen_id: 'PEN-TUR-001-P06', symptoms: 'Hemorrhagic skin lesions, ulcers around mouth, abdominal distension.', image_refs: [], notes: 'Aegean sea bream 480g, partial vaccine cover.' },
+    },
+    {
+      label: 'Image-only diagnostic',
+      values: { pen_id: '', symptoms: 'Multiple fish floating belly-up with no obvious external lesions.', image_refs: ['unknown/floater_001.jpg', 'unknown/floater_002.jpg'], notes: 'No pen ID known, ad-hoc photo sent from manager phone.' },
+    },
+  ],
+
+  'biomass-forecast': [
+    {
+      label: 'PEN-NOR-001-P02 - 8 weeks',
+      values: { pen_id: 'PEN-NOR-001-P02', horizon_weeks: 8, notes: 'Norwegian salmon grower, current avg 4.3 kg, target harvest 5.0 kg.' },
+    },
+    {
+      label: 'PEN-CHL-002-P07 - 12 weeks Coho',
+      values: { pen_id: 'PEN-CHL-002-P07', horizon_weeks: 12, notes: 'Chilean Coho, harvest weight 5.0 kg target by Q3.' },
+    },
+    {
+      label: 'PEN-AUS-001-P05 - 6 weeks post-DO',
+      values: { pen_id: 'PEN-AUS-001-P05', horizon_weeks: 6, notes: 'Tasmania POMV / low-DO history, growth may be suppressed.' },
+    },
+    {
+      label: 'PEN-TUR-001-P06 - 10 weeks bream',
+      values: { pen_id: 'PEN-TUR-001-P06', horizon_weeks: 10, notes: 'Aegean sea bream 480g, warming water, hot-season size grade.' },
+    },
+    {
+      label: 'PEN-CAN-001-P01 - 8 weeks Fundy',
+      values: { pen_id: 'PEN-CAN-001-P01', horizon_weeks: 8, notes: 'Bay of Fundy Atlantic salmon, summer growth phase.' },
+    },
+  ],
+
+  'harvest-timing': [
+    {
+      label: 'PEN-NOR-001-P02 - 5.0 kg target',
+      values: { pen_id: 'PEN-NOR-001-P02', target_avg_weight_g: 5000, market_notes: 'Nasdaq Salmon Index trending up through Q2.', notes: 'Leroy / Mowi processor priority.' },
+    },
+    {
+      label: 'PEN-CHL-001-P02 - caligus breach',
+      values: { pen_id: 'PEN-CHL-001-P02', target_avg_weight_g: 4500, market_notes: 'Coho FOB Tome 7.8 USD/kg.', notes: 'Caligus breach - consider early harvest.' },
+    },
+    {
+      label: 'PEN-AUS-001-P05 - POMV accelerate',
+      values: { pen_id: 'PEN-AUS-001-P05', target_avg_weight_g: 4700, market_notes: 'Coles Australia premium hold.', notes: 'POMV risk - accelerate harvest if welfare deteriorates.' },
+    },
+    {
+      label: 'PEN-TUR-001-P06 - bream 480g',
+      values: { pen_id: 'PEN-TUR-001-P06', target_avg_weight_g: 480, market_notes: 'Avramar EU summer demand.', notes: 'Sea bream hot-season size grade.' },
+    },
+    {
+      label: 'PEN-GRE-001-P03 - bass batch',
+      values: { pen_id: 'PEN-GRE-001-P03', target_avg_weight_g: 420, market_notes: 'Spanish/Italian retail steady.', notes: 'Argolic bass batch ready window 2 weeks.' },
+    },
+  ],
+
+  'mortality-predict': [
+    { label: 'All active pens - 30d outlook', values: { notes: '' } },
+    { label: 'PEN-SCO-001-P01 AGD focus', values: { pen_id: 'PEN-SCO-001-P01', notes: 'Open AGD investigation - want forward 30d mortality.' } },
+    { label: 'PEN-AUS-001-P05 POMV', values: { pen_id: 'PEN-AUS-001-P05', notes: 'POMV outbreak + low-DO history.' } },
+    { label: 'PEN-CHL-001-P02 caligus', values: { pen_id: 'PEN-CHL-001-P02', notes: 'Caligus breach + algal bloom risk.' } },
+    { label: 'PEN-CAN-002-P03 BKD', values: { pen_id: 'PEN-CAN-002-P03', notes: 'BKD investigation - 14d outlook critical.' } },
+  ],
+
+  'sustainability-score': [
+    { label: 'All farms - composite', values: { notes: '' } },
+    { label: 'FRM-NOR-001 Hardangerfjord', values: { farm_id: 'FRM-NOR-001', notes: 'ASC certified, recent benthic survey below limit.' } },
+    { label: 'FRM-CHL-001 Aysen', values: { farm_id: 'FRM-CHL-001', notes: 'Active Chrysochromulina bloom, caligus breach.' } },
+    { label: 'FRM-AUS-001 Macquarie', values: { farm_id: 'FRM-AUS-001', notes: 'POMV + low-DO + ASC lapsed.' } },
+    { label: 'FRM-SCO-001 Loch Linnhe', values: { farm_id: 'FRM-SCO-001', notes: 'Nitrogen flagged + AGD investigation.' } },
+  ],
+
+  'pen-camera-analyze': [
+    {
+      label: 'PEN-NOR-001-P02 routine frame',
+      values: { pen_id: 'PEN-NOR-001-P02', frame_refs: ['camera/PEN-NOR-001-P02_2026-05-20_0800.jpg'], frame_description: 'Mid-water column shot, school visible at 10m, normal schooling pattern, light fouling on inner net.', notes: '' },
+    },
+    {
+      label: 'PEN-SCO-001-P01 AGD inspection',
+      values: { pen_id: 'PEN-SCO-001-P01', frame_refs: ['camera/PEN-SCO-001-P01_2026-05-20_0700.jpg'], frame_description: 'Surface gasping behavior visible, slow swimming, gill paleness on close-ups.', notes: 'AGD investigation context.' },
+    },
+    {
+      label: 'PEN-CHL-001-P02 algal bloom',
+      values: { pen_id: 'PEN-CHL-001-P02', frame_refs: ['camera/PEN-CHL-001-P02_2026-05-20_1200.jpg'], frame_description: 'Greenish water column above 5m, reduced visibility, fish congregating deeper.', notes: 'Chrysochromulina bloom suspected.' },
+    },
+    {
+      label: 'PEN-AUS-001-P05 net check post-shark',
+      values: { pen_id: 'PEN-AUS-001-P05', frame_refs: ['camera/PEN-AUS-001-P05_2026-05-20_1500.jpg', 'camera/PEN-AUS-001-P05_2026-05-20_1502.jpg'], frame_description: 'Visible scuff marks on inner predator net at 8m depth, no breach apparent, normal schooling.', notes: 'Post broadnose sevengill shark interaction.' },
+    },
+    {
+      label: 'PEN-TUR-001-P06 monk seal check',
+      values: { pen_id: 'PEN-TUR-001-P06', frame_refs: ['camera/PEN-TUR-001-P06_2026-05-20_1000.jpg'], frame_description: 'Mediterranean monk seal visible outside predator net at 5m, no breach, fish remain calm.', notes: 'Protected species - non-lethal only.' },
+    },
+  ],
+
+  'escape-detect': [
+    {
+      label: 'PEN-NOR-001-P02 routine baseline',
+      values: {
+        pen_id: 'PEN-NOR-001-P02',
+        signals: [
+          { source: 'acoustic_tag', delta: 0.01, direction: 'flat', note: 'No change in tagged fish count.' },
+          { source: 'sonar', delta: 0.005, direction: 'flat', note: 'Sonar count within 0.5% baseline.' },
+          { source: 'net_tension', delta: 0.02, direction: 'up', note: 'Slight tension increase but within seasonal range.' },
+        ],
+        notes: 'Routine quarterly check.',
+      },
+    },
+    {
+      label: 'PEN-AUS-001-P05 post-shark breach concern',
+      values: {
+        pen_id: 'PEN-AUS-001-P05',
+        signals: [
+          { source: 'acoustic_tag', delta: -0.018, direction: 'down', note: 'Acoustic tag count down 1.8% in 6h.' },
+          { source: 'sonar', delta: -0.025, direction: 'down', note: 'Sonar count down 2.5% in 6h, abrupt.' },
+          { source: 'net_tension', delta: -0.4, direction: 'down', note: 'Net tension drop on south face suggesting breach.' },
+          { source: 'camera', delta: 0, direction: 'flat', note: 'Camera offline since shark interaction.' },
+        ],
+        notes: 'Post broadnose sevengill shark interaction; assess escape likelihood.',
+      },
+    },
+    {
+      label: 'PEN-CHL-001-P02 storm aftermath',
+      values: {
+        pen_id: 'PEN-CHL-001-P02',
+        signals: [
+          { source: 'acoustic_tag', delta: -0.006, direction: 'down', note: 'Small acoustic tag dip post-storm.' },
+          { source: 'sonar', delta: -0.012, direction: 'down', note: 'Sonar reading down 1.2%.' },
+          { source: 'net_tension', delta: 0.18, direction: 'up', note: 'Net tension spike during storm, now elevated.' },
+        ],
+        notes: 'Aysen storm 12h ago, mooring inspected.',
+      },
+    },
+    {
+      label: 'PEN-SCO-002-P04 sea lice + handling',
+      values: {
+        pen_id: 'PEN-SCO-002-P04',
+        signals: [
+          { source: 'acoustic_tag', delta: -0.003, direction: 'flat', note: 'Within baseline.' },
+          { source: 'sonar', delta: -0.004, direction: 'flat', note: 'No significant delta.' },
+          { source: 'net_tension', delta: 0.05, direction: 'up', note: 'Tension uptick during thermolicer prep.' },
+        ],
+        notes: 'Thermolicer prep - want clean baseline before run.',
+      },
+    },
+    {
+      label: 'PEN-CAN-001-P01 Fundy strong current',
+      values: {
+        pen_id: 'PEN-CAN-001-P01',
+        signals: [
+          { source: 'net_tension', delta: 0.62, direction: 'up', note: 'Net tension peak during 4 kt tide.' },
+          { source: 'sonar', delta: -0.008, direction: 'flat', note: 'Sonar steady.' },
+          { source: 'acoustic_tag', delta: 0.002, direction: 'flat', note: 'No loss detected.' },
+        ],
+        notes: 'Bay of Fundy peak tidal current; routine integrity check.',
+      },
+    },
+  ],
 };
 
 router.get('/samples', (req, res) => {
@@ -710,6 +882,267 @@ router.post('/market-price-forecast', async (req, res) => {
     if (!species) return res.status(400).json({ error: 'species is required' });
     const result = await ai.marketPriceForecast(species, horizon_weeks || 12, { notes: notes || '' });
     await record('market-price-forecast', { species, horizon_weeks, notes }, result);
+    res.json(result);
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Apply pass 7 — backlog AI endpoints
+// ─────────────────────────────────────────────────────────────────────────────
+
+// 17. fish-health-diagnostic — symptoms + image refs + water quality
+router.post('/fish-health-diagnostic', async (req, res) => {
+  try {
+    const { pen_id, symptoms, image_refs, notes } = req.body || {};
+    if (!symptoms && !pen_id) {
+      return res.status(400).json({ error: 'symptoms or pen_id is required' });
+    }
+    const ctx = { pen_id: pen_id || null, symptoms: symptoms || '', image_refs: Array.isArray(image_refs) ? image_refs : [], notes: notes || '' };
+    if (pen_id) {
+      const [pen, group, water, mort, lice, trt] = await Promise.all([
+        pool.query('SELECT * FROM net_pens WHERE pen_id = $1', [pen_id]),
+        pool.query('SELECT * FROM fish_groups WHERE pen_id = $1 ORDER BY id DESC LIMIT 1', [pen_id]),
+        pool.query('SELECT * FROM water_quality WHERE pen_id = $1 ORDER BY ts DESC LIMIT 10', [pen_id]),
+        pool.query('SELECT * FROM mortality_logs WHERE pen_id = $1 ORDER BY ts DESC LIMIT 10', [pen_id]),
+        pool.query('SELECT * FROM sea_lice_counts WHERE pen_id = $1 ORDER BY sampled_at DESC LIMIT 5', [pen_id]),
+        pool.query('SELECT * FROM treatments WHERE pen_id = $1 ORDER BY applied_at DESC LIMIT 5', [pen_id]),
+      ]);
+      ctx.pen = pen.rows[0] || null;
+      ctx.latest_group = group.rows[0] || null;
+      ctx.recent_water_quality = water.rows;
+      ctx.recent_mortality = mort.rows;
+      ctx.recent_sea_lice = lice.rows;
+      ctx.recent_treatments = trt.rows;
+    }
+    const result = await ai.fishHealthDiagnostic(ctx);
+    await record('fish-health-diagnostic', { pen_id, symptoms, image_refs, notes }, result);
+    res.json(result);
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+// 18. biomass-forecast — N-week per-pen projection
+router.post('/biomass-forecast', async (req, res) => {
+  try {
+    const { pen_id, horizon_weeks, notes } = req.body || {};
+    if (!pen_id) return res.status(400).json({ error: 'pen_id is required' });
+    const horizon = Math.min(Math.max(parseInt(horizon_weeks, 10) || 8, 1), 52);
+    const [pen, group, biomass, water] = await Promise.all([
+      pool.query('SELECT * FROM net_pens WHERE pen_id = $1', [pen_id]),
+      pool.query('SELECT * FROM fish_groups WHERE pen_id = $1 ORDER BY id DESC LIMIT 1', [pen_id]),
+      pool.query('SELECT * FROM biomass_estimates WHERE pen_id = $1 ORDER BY estimated_at DESC LIMIT 12', [pen_id]),
+      pool.query('SELECT * FROM water_quality WHERE pen_id = $1 ORDER BY ts DESC LIMIT 30', [pen_id]),
+    ]);
+    const ctx = {
+      pen_id,
+      horizon_weeks: horizon,
+      pen: pen.rows[0] || null,
+      latest_group: group.rows[0] || null,
+      historical_biomass: biomass.rows,
+      recent_water_quality: water.rows,
+      notes: notes || '',
+    };
+    const result = await ai.biomassForecast(ctx);
+    await record('biomass-forecast', { pen_id, horizon_weeks: horizon, notes }, result);
+    res.json(result);
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+// 19. harvest-timing — per-pen optimal harvest date
+router.post('/harvest-timing', async (req, res) => {
+  try {
+    const { pen_id, target_avg_weight_g, market_notes, notes } = req.body || {};
+    if (!pen_id) return res.status(400).json({ error: 'pen_id is required' });
+    const [pen, group, biomass] = await Promise.all([
+      pool.query('SELECT * FROM net_pens WHERE pen_id = $1', [pen_id]),
+      pool.query('SELECT * FROM fish_groups WHERE pen_id = $1 ORDER BY id DESC LIMIT 1', [pen_id]),
+      pool.query('SELECT * FROM biomass_estimates WHERE pen_id = $1 ORDER BY estimated_at DESC LIMIT 6', [pen_id]),
+    ]);
+    const ctx = {
+      pen_id,
+      target_avg_weight_g: target_avg_weight_g || null,
+      pen: pen.rows[0] || null,
+      latest_group: group.rows[0] || null,
+      recent_biomass: biomass.rows,
+      market_notes: market_notes || '',
+      notes: notes || '',
+    };
+    const result = await ai.harvestTiming(ctx);
+    await record('harvest-timing', { pen_id, target_avg_weight_g, market_notes, notes }, result);
+    res.json(result);
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+// 20. mortality-predict — forward 7/14/30 day mortality forecast
+router.post('/mortality-predict', async (req, res) => {
+  try {
+    const { pen_id, notes } = req.body || {};
+    let pens = [];
+    if (pen_id) {
+      const r = await pool.query('SELECT * FROM net_pens WHERE pen_id = $1', [pen_id]);
+      pens = r.rows;
+    } else {
+      const r = await pool.query("SELECT * FROM net_pens WHERE status IN ('stocked','harvest_ready') ORDER BY id ASC LIMIT 20");
+      pens = r.rows;
+    }
+    const penIds = pens.map((p) => p.pen_id).filter(Boolean);
+    let mort = { rows: [] };
+    let water = { rows: [] };
+    let lice = { rows: [] };
+    if (penIds.length > 0) {
+      [mort, water, lice] = await Promise.all([
+        pool.query('SELECT * FROM mortality_logs WHERE pen_id = ANY($1) ORDER BY ts DESC LIMIT 100', [penIds]),
+        pool.query('SELECT * FROM water_quality WHERE pen_id = ANY($1) ORDER BY ts DESC LIMIT 80', [penIds]),
+        pool.query('SELECT * FROM sea_lice_counts WHERE pen_id = ANY($1) ORDER BY sampled_at DESC LIMIT 40', [penIds]),
+      ]);
+    }
+    const ctx = {
+      pens,
+      recent_mortality: mort.rows,
+      recent_water_quality: water.rows,
+      recent_sea_lice: lice.rows,
+      notes: notes || '',
+    };
+    const result = await ai.mortalityPredict(ctx);
+    await record('mortality-predict', { pen_id, notes }, result);
+    res.json(result);
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+// 21. sustainability-score — ASC/BAP composite across farms
+router.post('/sustainability-score', async (req, res) => {
+  try {
+    const { farm_id, notes } = req.body || {};
+    let farms = [];
+    if (farm_id) {
+      const r = await pool.query('SELECT * FROM farms WHERE farm_id = $1', [farm_id]);
+      farms = r.rows;
+    } else {
+      const r = await pool.query('SELECT * FROM farms ORDER BY id ASC');
+      farms = r.rows;
+    }
+    const farmIds = farms.map((f) => f.farm_id).filter(Boolean);
+    let impacts = { rows: [] };
+    let certs = { rows: [] };
+    let mort = { rows: [] };
+    let trt = { rows: [] };
+    if (farmIds.length > 0) {
+      [impacts, certs, mort, trt] = await Promise.all([
+        pool.query('SELECT * FROM environmental_impacts WHERE farm_id = ANY($1) ORDER BY opened_at DESC LIMIT 30', [farmIds]),
+        pool.query('SELECT * FROM certifications WHERE farm_id = ANY($1) ORDER BY expires_at ASC LIMIT 30', [farmIds]),
+        pool.query('SELECT * FROM mortality_logs ORDER BY ts DESC LIMIT 40'),
+        pool.query('SELECT * FROM treatments ORDER BY applied_at DESC LIMIT 30'),
+      ]);
+    }
+    const ctx = {
+      scope: farm_id ? farm_id : 'all_farms',
+      farms,
+      recent_environmental_impacts: impacts.rows,
+      certifications: certs.rows,
+      recent_mortality: mort.rows,
+      recent_treatments: trt.rows,
+      notes: notes || '',
+    };
+    const result = await ai.sustainabilityScore(ctx);
+    await record('sustainability-score', { farm_id, notes }, result);
+    res.json(result);
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+// 22. pen-camera-analyze — image-frame proxy CV (text-based) for pen camera
+router.post('/pen-camera-analyze', async (req, res) => {
+  try {
+    const { pen_id, frame_refs, frame_description, notes } = req.body || {};
+    if (!pen_id && !frame_description && (!Array.isArray(frame_refs) || frame_refs.length === 0)) {
+      return res.status(400).json({ error: 'pen_id, frame_refs or frame_description is required' });
+    }
+    const ctx = {
+      pen_id: pen_id || null,
+      frame_refs: Array.isArray(frame_refs) ? frame_refs : [],
+      frame_description: frame_description || '',
+      notes: notes || '',
+    };
+    if (pen_id) {
+      const [pen, group, lice] = await Promise.all([
+        pool.query('SELECT * FROM net_pens WHERE pen_id = $1', [pen_id]),
+        pool.query('SELECT * FROM fish_groups WHERE pen_id = $1 ORDER BY id DESC LIMIT 1', [pen_id]),
+        pool.query('SELECT * FROM sea_lice_counts WHERE pen_id = $1 ORDER BY sampled_at DESC LIMIT 3', [pen_id]),
+      ]);
+      ctx.pen = pen.rows[0] || null;
+      ctx.latest_group = group.rows[0] || null;
+      ctx.recent_sea_lice = lice.rows;
+    }
+    const result = await ai.penCameraAnalyze(ctx);
+    await record('pen-camera-analyze', { pen_id, frame_refs, frame_description, notes }, result);
+    res.json(result);
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+// 23. escape-detect — fuse acoustic/sonar/net-tension signals
+router.post('/escape-detect', async (req, res) => {
+  try {
+    const { pen_id, signals, notes } = req.body || {};
+    if (!pen_id) return res.status(400).json({ error: 'pen_id is required' });
+    const [pen, group, biomass] = await Promise.all([
+      pool.query('SELECT * FROM net_pens WHERE pen_id = $1', [pen_id]),
+      pool.query('SELECT * FROM fish_groups WHERE pen_id = $1 ORDER BY id DESC LIMIT 1', [pen_id]),
+      pool.query('SELECT * FROM biomass_estimates WHERE pen_id = $1 ORDER BY estimated_at DESC LIMIT 3', [pen_id]),
+    ]);
+    const ctx = {
+      pen_id,
+      signals: Array.isArray(signals) ? signals : [],
+      pen: pen.rows[0] || null,
+      latest_group: group.rows[0] || null,
+      recent_biomass: biomass.rows,
+      notes: notes || '',
+    };
+    const result = await ai.escapeDetect(ctx);
+    await record('escape-detect', { pen_id, signals, notes }, result);
+    res.json(result);
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+// ─────────────────────────────────────────────────────────────────────────────
+// NEEDS-CREDS: regulator live feeds (SEPA, Mattilsynet, SERNAPESCA, EPA Tasmania)
+// 503 stubs — no live integration without credentials.
+// ─────────────────────────────────────────────────────────────────────────────
+const REGULATOR_FEEDS = ['sepa', 'mattilsynet', 'sernapesca', 'epa-tasmania'];
+REGULATOR_FEEDS.forEach((slug) => {
+  router.get(`/regulator-feed/${slug}`, (req, res) => {
+    res.status(503).json({
+      error: 'live regulator feed not configured',
+      regulator: slug,
+      hint: `Set ${slug.toUpperCase().replace(/-/g, '_')}_API_KEY in .env to enable live ingest.`,
+      status: 'stub',
+    });
+  });
+});
+
+router.post('/stocking-density-risk', async (req, res) => {
+  try {
+    const body = req.body || {};
+    const penId = body.pen_id || 'unspecified-pen';
+    const biomassKg = Number(body.biomass_kg || body.biomassKg || 0);
+    const volumeM3 = Number(body.pen_volume_m3 || body.volume_m3 || 1);
+    const tempC = Number(body.water_temp_c || 12);
+    const doMgL = Number(body.dissolved_oxygen_mg_l || 7);
+    const density = biomassKg / Math.max(volumeM3, 1);
+    let score = Math.round(density * 4 + Math.max(0, tempC - 14) * 5 + Math.max(0, 7 - doMgL) * 12);
+    score = Math.max(0, Math.min(100, score));
+    const riskBand = score >= 70 ? 'critical' : score >= 45 ? 'elevated' : 'managed';
+    const actions = [
+      density > 22 ? 'Reduce feed ramp and prepare split or harvest option.' : 'Maintain current stocking plan with weekly biomass checks.',
+      doMgL < 6.5 ? 'Move aeration and oxygen contingency checks to daily cadence.' : 'Keep dissolved oxygen surveillance on standard cadence.',
+      tempC > 15 ? 'Review thermal stress threshold before any grading or treatment activity.' : 'No thermal restriction triggered.',
+    ];
+    const result = {
+      pen_id: penId,
+      density_kg_m3: Number(density.toFixed(2)),
+      risk_score: score,
+      risk_band: riskBand,
+      actions,
+      generated_at: new Date().toISOString(),
+    };
+    await record('stocking-density-risk', body, result);
     res.json(result);
   } catch (e) { res.status(500).json({ error: e.message }); }
 });
