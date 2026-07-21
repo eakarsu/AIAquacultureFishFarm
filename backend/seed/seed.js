@@ -1,7 +1,12 @@
 const fs = require('fs');
 const path = require('path');
 const { Pool } = require('pg');
+const { hashPassword } = require('../services/passwords');
 require('dotenv').config({ path: path.join(__dirname, '..', '..', '.env') });
+if (process.env.CONFIRM_DEMO_SEED !== 'yes') throw new Error('Refusing destructive demo seed without CONFIRM_DEMO_SEED=yes');
+for (const key of ['DEMO_ADMIN_PASSWORD','DEMO_MANAGER_PASSWORD','DEMO_VIEWER_PASSWORD']) {
+  if (!process.env[key]) throw new Error(`${key} is required for demo seeding`);
+}
 
 const pool = new Pool({
   host: process.env.DB_HOST || 'localhost',
@@ -45,10 +50,10 @@ async function run() {
     `);
 
     console.log('[seed] applying migrations...');
-    const schema1 = fs.readFileSync(path.join(__dirname, '..', 'migrations', '001_schema.sql'), 'utf8');
-    await client.query(schema1);
-    const schema2 = fs.readFileSync(path.join(__dirname, '..', 'migrations', '002_schema.sql'), 'utf8');
-    await client.query(schema2);
+    const migrationDir = path.join(__dirname, '..', 'migrations');
+    for (const file of fs.readdirSync(migrationDir).filter((name) => name.endsWith('.sql')).sort()) {
+      await client.query(fs.readFileSync(path.join(migrationDir, file), 'utf8'));
+    }
 
     console.log('[seed] inserting farms...');
     const farms = [
@@ -277,14 +282,14 @@ async function run() {
 
     console.log('[seed] inserting users...');
     const users = [
-      ['admin@aquafarm.io',   'admin123',   'Admin',          'admin'],
-      ['manager@aquafarm.io', 'manager123', 'Farm Manager',   'manager'],
-      ['viewer@aquafarm.io',  'viewer123',  'Viewer',         'viewer'],
+      ['admin@aquafarm.io',   process.env.DEMO_ADMIN_PASSWORD,   'Admin',          'admin'],
+      ['manager@aquafarm.io', process.env.DEMO_MANAGER_PASSWORD, 'Farm Manager',   'manager'],
+      ['viewer@aquafarm.io',  process.env.DEMO_VIEWER_PASSWORD,  'Viewer',         'viewer'],
     ];
     for (const u of users) {
       await client.query(
-        `INSERT INTO users (email,password,name,role) VALUES ($1,$2,$3,$4)`,
-        u
+        `INSERT INTO users (email,password_hash,name,role,tenant_id) VALUES ($1,$2,$3,$4,$5)`,
+        [u[0], hashPassword(u[1]), u[2], u[3], process.env.DEFAULT_TENANT_ID || 'default']
       );
     }
 

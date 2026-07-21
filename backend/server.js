@@ -10,6 +10,8 @@ const { fireWebhook } = require('./services/webhooks');
 
 const app = express();
 const PORT = process.env.BACKEND_PORT || 3095;
+if (process.env.NODE_ENV === 'production' && !process.env.ALLOWED_ORIGINS) throw new Error('ALLOWED_ORIGINS is required in production');
+if (process.env.NODE_ENV === 'production' && !process.env.DEFAULT_TENANT_ID) throw new Error('DEFAULT_TENANT_ID is required in production');
 
 // Middleware
 app.use(helmet({ crossOriginResourcePolicy: { policy: 'cross-origin' } }));
@@ -63,7 +65,7 @@ app.use('/api/vendors',                require('./routes/vendors'));
 app.use('/api/audit-log',              require('./routes/auditLog'));
 
 // AI routes (16 sub-endpoints + history under /api/ai)
-app.use('/api/ai', require('./routes/ai'));
+if (process.env.ENABLE_EXPERIMENTAL_AI === 'true') app.use('/api/ai', require('./routes/ai'));
 
 // Cross-cutting
 app.use('/api/notifications', require('./routes/notifications'));
@@ -75,6 +77,7 @@ app.use('/api/dashboard', require('./routes/dashboard'));
 
 // Custom Farm Analytics views (read-only aggregated time-series)
 app.use('/api/custom-views', require('./routes/customViews'));
+app.use('/api/governed-operations', require('./routes/governedOperations'));
 
 app.listen(PORT, () => {
   console.log(`\nAI Aquaculture Fish Farm API running on http://localhost:${PORT}\n`);
