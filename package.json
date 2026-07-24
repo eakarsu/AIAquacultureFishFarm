@@ -8,6 +8,8 @@
     "backend": "cd backend && npm start",
     "frontend": "cd frontend && npm start",
     "seed": "cd backend && node seed/seed.js",
+    "migrate": "bash scripts/migrate.sh",
+    "create-admin": "cd backend && npm run create-admin",
     "install-all": "npm install && cd backend && npm install && cd ../frontend && npm install"
   }
 }

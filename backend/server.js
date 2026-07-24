@@ -38,6 +38,7 @@ app.use('/api/auth', require('./routes/auth'));
 
 // Everything below this line requires a Bearer token.
 app.use('/api', authenticateToken);
+app.use('/api/runtime-ai', require('./routes/runtimeAi'));
 
 // 18 CRUD routes (all use _crudFactory: RBAC + bulk-import + attachments)
 app.use('/api/farms',                  require('./routes/farms'));
