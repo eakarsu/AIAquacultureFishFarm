@@ -13,7 +13,7 @@ export default function AIDiverSafetyPage() {
         { key: 'diver_id',       label: 'Lead Diver ID',  placeholder: 'e.g. DVR-001' },
         { key: 'site_notes',     label: 'Site conditions', type: 'textarea', placeholder: 'Depth, current, visibility, water temp, weather...' },
       ]}
-      run={(v) => aiDiverSafetyBrief({ dive_objective: v.dive_objective, diver_id: v.diver_id, site_notes: v.site_notes })}
+      run={(v, requestOptions) => aiDiverSafetyBrief({ dive_objective: v.dive_objective, diver_id: v.diver_id, site_notes: v.site_notes }, requestOptions)}
       buttonLabel="Build Safety Brief"
     />
   );

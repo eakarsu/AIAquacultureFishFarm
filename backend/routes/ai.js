@@ -123,6 +123,7 @@ const SAMPLES = {
       label: 'Sea lice 0.81/fish PEN-SCO-002-P04',
       values: {
         issue: 'Sea lice (Lepeophtheirus salmonis) at 0.81 adult female/fish trending up in PEN-SCO-002-P04, Shetland.',
+        pen_id: 'PEN-SCO-002-P04',
         pen_notes: 'Pen volume 46,000 m3, fish count 158,000, avg 4.1 kg, water temp 9C, no active treatments in last 60 days.',
       },
     },
@@ -130,6 +131,7 @@ const SAMPLES = {
       label: 'AGD outbreak PEN-SCO-001-P01',
       values: {
         issue: 'Amoebic Gill Disease (AGD) clinical signs in PEN-SCO-001-P01 Loch Linnhe; gross gill score 3 on 18% of sampled fish.',
+        pen_id: 'PEN-SCO-001-P01',
         pen_notes: 'Pen volume 42,000 m3, fish count 145,000, avg 3.6 kg, water temp 10.5C, salinity 32 ppt.',
       },
     },
@@ -137,6 +139,7 @@ const SAMPLES = {
       label: 'BKD investigation PEN-CAN-002-P03',
       values: {
         issue: 'Bacterial Kidney Disease (BKD) suspected in PEN-CAN-002-P03 Chinook cohort after spike in mortality.',
+        pen_id: 'PEN-CAN-002-P03',
         pen_notes: 'Pen 38,000 m3, fish count 98,000, avg 2.9 kg, water temp 11.5C, no antibiotics used in last 90 days.',
       },
     },
@@ -144,6 +147,7 @@ const SAMPLES = {
       label: 'Vibrio in Cesme sea bream',
       values: {
         issue: 'Vibrio anguillarum suspected in PEN-TUR-001-P06 sea bream cohort.',
+        pen_id: 'PEN-TUR-001-P06',
         pen_notes: 'Pen 32,000 m3, 265,000 sea bream avg 480 g, water temp 19.8C, partial vaccine cover.',
       },
     },
@@ -151,6 +155,7 @@ const SAMPLES = {
       label: 'POMV outbreak PEN-AUS-001-P05',
       values: {
         issue: 'POMV (Pilchard Orthomyxovirus) confirmed in PEN-AUS-001-P05 Tasmania; want supportive husbandry plan.',
+        pen_id: 'PEN-AUS-001-P05',
         pen_notes: 'Pen 60,000 m3, fish count 220,000, avg 4.7 kg, water temp 14C, low DO event 4 days ago.',
       },
     },
@@ -212,6 +217,7 @@ const SAMPLES = {
       label: 'Grey seal breach - PEN-NOR-001-P02',
       values: {
         incident: 'Grey seal entered predator net at PEN-NOR-001-P02, 2026-05-12 02:15 local. No fish escape yet but two visible bite marks on inner net.',
+        incident_id: 'PRD-2026-0002',
         farm_notes: 'FRM-NOR-001 Hardangerfjord, depth 35m, exposed to seal colony on east shore. Predator net Egersund 100mm mesh, anti-fouled.',
       },
     },
@@ -219,6 +225,7 @@ const SAMPLES = {
       label: 'South American sea lion - Aysen',
       values: {
         incident: 'Repeat South American sea lion attacks at PEN-CHL-001-P02 over 5 nights.',
+        incident_id: 'PRD-2026-0005',
         farm_notes: 'FRM-CHL-001, sheltered fjord, double-net configuration, acoustic deterrent in place but ineffective.',
       },
     },
@@ -226,6 +233,7 @@ const SAMPLES = {
       label: 'NZ fur seal - Macquarie Harbour',
       values: {
         incident: 'New Zealand fur seal repeated attacks at PEN-AUS-001-P05.',
+        incident_id: 'PRD-2026-0009',
         farm_notes: 'FRM-AUS-001 Tasmania, exposed pen at harbour mouth, weather-locked night shifts limit response.',
       },
     },
@@ -233,6 +241,7 @@ const SAMPLES = {
       label: 'Broadnose sevengill shark - critical',
       values: {
         incident: 'Broadnose sevengill shark intrusion at PEN-AUS-001-P05, large enough to cause significant net damage.',
+        incident_id: 'PRD-2026-0012',
         farm_notes: 'FRM-AUS-001 Macquarie Harbour, single predator net, no shark-specific deterrent in place.',
       },
     },
@@ -240,6 +249,7 @@ const SAMPLES = {
       label: 'Mediterranean monk seal - protected species',
       values: {
         incident: 'Mediterranean monk seal interaction at PEN-TUR-001-P06; strictly protected, lethal deterrent not permitted.',
+        incident_id: 'PRD-2026-0014',
         farm_notes: 'FRM-TUR-001 Aegean, working with Turkish ministry on non-lethal deterrent options only.',
       },
     },
@@ -296,6 +306,7 @@ const SAMPLES = {
       label: 'Net inspection L2 - Hardangerfjord',
       values: {
         dive_objective: 'Quarterly net integrity inspection at PEN-NOR-001-P02 after grey seal incident.',
+        diver_id: 'DVR-001',
         site_notes: 'FRM-NOR-001 Hardangerfjord, depth 35m, water temp 9.4C, visibility 4-6m, current 0.4 kt, weather calm.',
       },
     },
@@ -303,6 +314,7 @@ const SAMPLES = {
       label: 'Mortality removal - Aysen bloom',
       values: {
         dive_objective: 'Mortality basket removal at PEN-CHL-001-P02 after caligus secondary mortality + algal bloom.',
+        diver_id: 'DVR-005',
         site_notes: 'FRM-CHL-001 Aysen fjord, depth 30m, current bloom in surface 5m, lower DO at depth, water temp 11C.',
       },
     },
@@ -310,6 +322,7 @@ const SAMPLES = {
       label: 'Mooring inspection - Tasmania',
       values: {
         dive_objective: 'Mooring inspection at FRM-AUS-001 after low-DO event and predator pressure.',
+        diver_id: 'DVR-009',
         site_notes: 'Macquarie Harbour mouth, depth 38m, current 1.2 kt, visibility 3m due to bloom, weather rolling 2m swell.',
       },
     },
@@ -317,6 +330,7 @@ const SAMPLES = {
       label: 'Net repair - Bay of Fundy',
       values: {
         dive_objective: 'Net repair after small puncture on PEN-CAN-001-P01.',
+        diver_id: 'DVR-007',
         site_notes: 'Bay of Fundy, strong tidal current up to 4 kt at peak, work in slack water only, depth 25m, temp 8C.',
       },
     },
@@ -324,6 +338,7 @@ const SAMPLES = {
       label: 'Predator net check - Cesme',
       values: {
         dive_objective: 'Predator net inspection at PEN-TUR-001-P06 after Mediterranean monk seal interaction.',
+        diver_id: 'DVR-014',
         site_notes: 'Cesme Aegean, depth 20m, water temp 19.8C, visibility 8m, calm conditions.',
       },
     },
@@ -410,7 +425,7 @@ const SAMPLES = {
     },
     {
       label: 'BKD investigation - PEN-CAN-002-P03',
-      values: { pen_id: 'PEN-CAN-002-P03', symptoms: 'Exophthalmia, kidney swelling on post-mortem, dark skin, lethargy.', image_refs: [], notes: 'Chinook cohort, 520 mortality in single day.' },
+      values: { pen_id: 'PEN-CAN-002-P03', symptoms: 'Exophthalmia, kidney swelling on post-mortem, dark skin, lethargy.', image_refs: ['camera/PEN-CAN-002-P03_2026-05-20_0900.jpg'], notes: 'Chinook cohort, 520 mortality in single day.' },
     },
     {
       label: 'POMV suspect - PEN-AUS-001-P05',
@@ -418,11 +433,11 @@ const SAMPLES = {
     },
     {
       label: 'Sea bass Vibrio - PEN-TUR-001-P06',
-      values: { pen_id: 'PEN-TUR-001-P06', symptoms: 'Hemorrhagic skin lesions, ulcers around mouth, abdominal distension.', image_refs: [], notes: 'Aegean sea bream 480g, partial vaccine cover.' },
+      values: { pen_id: 'PEN-TUR-001-P06', symptoms: 'Hemorrhagic skin lesions, ulcers around mouth, abdominal distension.', image_refs: ['camera/PEN-TUR-001-P06_2026-05-20_0930.jpg'], notes: 'Aegean sea bream 480g, partial vaccine cover.' },
     },
     {
-      label: 'Image-only diagnostic',
-      values: { pen_id: '', symptoms: 'Multiple fish floating belly-up with no obvious external lesions.', image_refs: ['unknown/floater_001.jpg', 'unknown/floater_002.jpg'], notes: 'No pen ID known, ad-hoc photo sent from manager phone.' },
+      label: 'PEN-NOR-001-P01 ad-hoc diagnostic',
+      values: { pen_id: 'PEN-NOR-001-P01', symptoms: 'Multiple fish floating belly-up with no obvious external lesions.', image_refs: ['camera/PEN-NOR-001-P01_floater_001.jpg', 'camera/PEN-NOR-001-P01_floater_002.jpg'], notes: 'Ad-hoc photos supplied by the farm manager; verify capture time and provenance.' },
     },
   ],
 
@@ -473,7 +488,7 @@ const SAMPLES = {
   ],
 
   'mortality-predict': [
-    { label: 'All active pens - 30d outlook', values: { notes: '' } },
+    { label: 'PEN-NOR-001-P01 - 30d outlook', values: { pen_id: 'PEN-NOR-001-P01', notes: 'Review the complete 30-day mortality outlook for this active seeded pen.' } },
     { label: 'PEN-SCO-001-P01 AGD focus', values: { pen_id: 'PEN-SCO-001-P01', notes: 'Open AGD investigation - want forward 30d mortality.' } },
     { label: 'PEN-AUS-001-P05 POMV', values: { pen_id: 'PEN-AUS-001-P05', notes: 'POMV outbreak + low-DO history.' } },
     { label: 'PEN-CHL-001-P02 caligus', values: { pen_id: 'PEN-CHL-001-P02', notes: 'Caligus breach + algal bloom risk.' } },
@@ -481,7 +496,7 @@ const SAMPLES = {
   ],
 
   'sustainability-score': [
-    { label: 'All farms - composite', values: { notes: '' } },
+    { label: 'FRM-NOR-001 composite', values: { farm_id: 'FRM-NOR-001', notes: 'Review the complete sustainability composite for this active seeded farm.' } },
     { label: 'FRM-NOR-001 Hardangerfjord', values: { farm_id: 'FRM-NOR-001', notes: 'ASC certified, recent benthic survey below limit.' } },
     { label: 'FRM-CHL-001 Aysen', values: { farm_id: 'FRM-CHL-001', notes: 'Active Chrysochromulina bloom, caligus breach.' } },
     { label: 'FRM-AUS-001 Macquarie', values: { farm_id: 'FRM-AUS-001', notes: 'POMV + low-DO + ASC lapsed.' } },

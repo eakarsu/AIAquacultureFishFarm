@@ -14,12 +14,12 @@ export default function AIPenCameraAnalyzePage() {
         { key: 'frame_description', label: 'Frame description / observation', type: 'textarea', placeholder: 'Mid-water shot, schooling pattern, fouling, behavior...' },
         { key: 'notes',             label: 'Notes', type: 'textarea' },
       ]}
-      run={(v) => aiPenCameraAnalyze({
+      run={(v, requestOptions) => aiPenCameraAnalyze({
         pen_id: v.pen_id,
         frame_refs: (v.frame_refs || '').split(',').map((s) => s.trim()).filter(Boolean),
         frame_description: v.frame_description,
         notes: v.notes,
-      })}
+      }, requestOptions)}
       buttonLabel="Analyze Frame"
     />
   );

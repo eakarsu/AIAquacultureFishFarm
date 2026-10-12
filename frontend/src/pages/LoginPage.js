@@ -4,8 +4,11 @@ import { login, setToken, setStoredUser } from '../services/api';
 
 export default function LoginPage() {
   const navigate = useNavigate();
-  const [email, setEmail] = useState('admin@aquafarm.io');
-  const [password, setPassword] = useState('admin123');
+  const demoEmail = process.env.REACT_APP_DEMO_EMAIL || '';
+  const demoPassword = process.env.REACT_APP_DEMO_PASSWORD || '';
+  const demoConfigured = process.env.REACT_APP_ENABLE_DEMO_CREDENTIAL_AUTOFILL === 'true' && Boolean(demoEmail && demoPassword);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
@@ -56,19 +59,24 @@ export default function LoginPage() {
 
         <button
           type="button"
-          onClick={() => { setEmail(process.env.REACT_APP_DEMO_EMAIL || ''); setPassword(process.env.REACT_APP_DEMO_PASSWORD || ''); }}
-          disabled={!process.env.REACT_APP_DEMO_EMAIL || !process.env.REACT_APP_DEMO_PASSWORD}
-          aria-label="Auto Fill Demo Credentials"
-          style={{ width: '100%', marginBottom: '12px', padding: '10px 14px', borderRadius: '8px', border: '1px solid currentColor', background: 'transparent', cursor: 'pointer' }}
+          onClick={() => {
+            setEmail(demoEmail);
+            setPassword(demoPassword);
+            setError(null);
+          }}
+          disabled={loading || !demoConfigured}
+          aria-label="Fill Demo Credentials"
+          title={demoConfigured ? 'Fill the configured local demo account' : 'Demo credential filling is not configured for this local build'}
+          style={{ width: '100%', marginBottom: '12px', padding: '10px 14px', borderRadius: '8px', border: '1px solid currentColor', background: 'transparent', cursor: demoConfigured ? 'pointer' : 'not-allowed' }}
         >
-          Auto Fill Demo Credentials
+          Fill Demo Credentials
         </button>
         <button className="btn" type="submit" disabled={loading} style={{ width: '100%' }}>
           {loading ? <><span className="spinner" />Signing in...</> : 'Sign In'}
         </button>
 
         <p className="login-hint">
-          Demo: <code>admin@aquafarm.io</code> / <code>admin123</code>
+          {demoConfigured ? <>Demo account: <code>{demoEmail}</code></> : 'Demo credential filling is disabled until a local demo account is configured.'}
         </p>
       </form>
     </div>

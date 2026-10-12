@@ -13,7 +13,7 @@ export default function AITreatmentRecommendPage() {
         { key: 'pen_id',    label: 'Pen ID',       placeholder: 'e.g. PEN-SCO-001-P01' },
         { key: 'pen_notes', label: 'Pen context',  type: 'textarea', placeholder: 'Volume, fish count, avg weight, water temp, recent treatments...' },
       ]}
-      run={(v) => aiTreatmentRecommend({ issue: v.issue, pen_id: v.pen_id, pen_notes: v.pen_notes })}
+      run={(v, requestOptions) => aiTreatmentRecommend({ issue: v.issue, pen_id: v.pen_id, pen_notes: v.pen_notes }, requestOptions)}
       buttonLabel="Recommend Treatment"
     />
   );

@@ -13,7 +13,7 @@ export default function AIBiomassForecastPage() {
         { key: 'horizon_weeks',  label: 'Horizon (weeks)', type: 'number', defaultValue: 8 },
         { key: 'notes',          label: 'Notes', type: 'textarea' },
       ]}
-      run={(v) => aiBiomassForecast({ pen_id: v.pen_id, horizon_weeks: v.horizon_weeks, notes: v.notes })}
+      run={(v, requestOptions) => aiBiomassForecast({ pen_id: v.pen_id, horizon_weeks: v.horizon_weeks, notes: v.notes }, requestOptions)}
       buttonLabel="Forecast Biomass"
     />
   );

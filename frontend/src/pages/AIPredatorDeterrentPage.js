@@ -13,7 +13,7 @@ export default function AIPredatorDeterrentPage() {
         { key: 'incident_id',  label: 'Incident ID',    placeholder: 'e.g. PRD-2026-0002' },
         { key: 'farm_notes',   label: 'Farm context',   type: 'textarea', placeholder: 'Site exposure, existing deterrents, regulations...' },
       ]}
-      run={(v) => aiPredatorDeterrentPlan({ incident: v.incident, incident_id: v.incident_id, farm_notes: v.farm_notes })}
+      run={(v, requestOptions) => aiPredatorDeterrentPlan({ incident: v.incident, incident_id: v.incident_id, farm_notes: v.farm_notes }, requestOptions)}
       buttonLabel="Build Plan"
     />
   );

@@ -12,7 +12,7 @@ export default function AIEnvironmentalRiskPage() {
         { key: 'farm_id', label: 'Farm ID', placeholder: 'e.g. FRM-CHL-001' },
         { key: 'notes',   label: 'Context', type: 'textarea', placeholder: 'Recent inspections, bloom activity, compliance posture...' },
       ]}
-      run={(v) => aiEnvironmentalRiskBrief({ farm_id: v.farm_id, notes: v.notes })}
+      run={(v, requestOptions) => aiEnvironmentalRiskBrief({ farm_id: v.farm_id, notes: v.notes }, requestOptions)}
       buttonLabel="Build Risk Brief"
     />
   );

@@ -14,12 +14,12 @@ export default function AIFishHealthDiagnosticPage() {
         { key: 'image_refs', label: 'Image references (comma-separated)', placeholder: 'camera/PEN-001_2026-05-20.jpg, ...' },
         { key: 'notes',      label: 'Additional notes', type: 'textarea' },
       ]}
-      run={(v) => aiFishHealthDiagnostic({
+      run={(v, requestOptions) => aiFishHealthDiagnostic({
         pen_id: v.pen_id,
         symptoms: v.symptoms,
         image_refs: (v.image_refs || '').split(',').map((s) => s.trim()).filter(Boolean),
         notes: v.notes,
-      })}
+      }, requestOptions)}
       buttonLabel="Run Diagnostic"
     />
   );

@@ -11,7 +11,7 @@ export default function AIWaterQualityAnomalyPage() {
       inputs={[
         { key: 'notes', label: 'Optional analyst context', type: 'textarea', placeholder: 'e.g. Low-DO event at Macquarie Harbour, bloom risk...' },
       ]}
-      run={(v) => aiWaterQualityAnomaly({ notes: v.notes })}
+      run={(v, requestOptions) => aiWaterQualityAnomaly({ notes: v.notes }, requestOptions)}
       buttonLabel="Detect Anomalies"
     />
   );

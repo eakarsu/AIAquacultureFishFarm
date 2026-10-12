@@ -12,7 +12,7 @@ export default function AIMortalityPredictPage() {
         { key: 'pen_id', label: 'Pen ID (optional - leave blank for fleet-wide)', placeholder: 'e.g. PEN-AUS-001-P05' },
         { key: 'notes',  label: 'Notes', type: 'textarea' },
       ]}
-      run={(v) => aiMortalityPredict({ pen_id: v.pen_id, notes: v.notes })}
+      run={(v, requestOptions) => aiMortalityPredict({ pen_id: v.pen_id, notes: v.notes }, requestOptions)}
       buttonLabel="Predict Mortality"
     />
   );

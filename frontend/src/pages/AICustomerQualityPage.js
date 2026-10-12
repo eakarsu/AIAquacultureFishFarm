@@ -13,7 +13,7 @@ export default function AICustomerQualityPage() {
         { key: 'period',      label: 'Period',      placeholder: 'e.g. Q2 2026' },
         { key: 'notes',       label: 'Context',     type: 'textarea', placeholder: 'Spec, certifications required, premium grade...' },
       ]}
-      run={(v) => aiCustomerQualityReport({ customer_id: v.customer_id, period: v.period, notes: v.notes })}
+      run={(v, requestOptions) => aiCustomerQualityReport({ customer_id: v.customer_id, period: v.period, notes: v.notes }, requestOptions)}
       buttonLabel="Build Report"
     />
   );

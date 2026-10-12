@@ -14,12 +14,12 @@ export default function AIHarvestTimingPage() {
         { key: 'market_notes',          label: 'Market notes', type: 'textarea' },
         { key: 'notes',                 label: 'Additional notes', type: 'textarea' },
       ]}
-      run={(v) => aiHarvestTiming({
+      run={(v, requestOptions) => aiHarvestTiming({
         pen_id: v.pen_id,
         target_avg_weight_g: v.target_avg_weight_g,
         market_notes: v.market_notes,
         notes: v.notes,
-      })}
+      }, requestOptions)}
       buttonLabel="Recommend Harvest Date"
     />
   );

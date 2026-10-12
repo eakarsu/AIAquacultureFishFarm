@@ -30,7 +30,7 @@ app.use(express.urlencoded({ extended: true, limit: '20mb' }));
 
 // Health check (public)
 app.get('/api/health', (req, res) => {
-  res.json({ status: 'ok', timestamp: new Date().toISOString() });
+  res.json({ status: 'ok', timestamp: new Date().toISOString(), experimentalStockingEstimator: { available: process.env.ENABLE_EXPERIMENTAL_AI === 'true', method: 'fixed-formula', reason: process.env.ENABLE_EXPERIMENTAL_AI === 'true' ? 'Experimental fixed-formula estimator is mounted. It does not call OpenRouter.' : 'Experimental estimator route is disabled. Examples are available for review.' } });
 });
 
 // Auth (public)

@@ -11,7 +11,7 @@ export default function AIMortalityAnomalyPage() {
       inputs={[
         { key: 'notes', label: 'Optional context', type: 'textarea', placeholder: 'e.g. Focus on a specific pen, suspected disease...' },
       ]}
-      run={(v) => aiMortalityAnomalyDetect({ notes: v.notes })}
+      run={(v, requestOptions) => aiMortalityAnomalyDetect({ notes: v.notes }, requestOptions)}
       buttonLabel="Detect Anomalies"
     />
   );

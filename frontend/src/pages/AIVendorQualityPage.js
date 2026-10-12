@@ -11,7 +11,7 @@ export default function AIVendorQualityPage() {
       inputs={[
         { key: 'notes', label: 'Optional focus / context', type: 'textarea', placeholder: 'e.g. Focus only on feed vendors and FCR / pellet integrity.' },
       ]}
-      run={(v) => aiVendorQualityScore({ notes: v.notes })}
+      run={(v, requestOptions) => aiVendorQualityScore({ notes: v.notes }, requestOptions)}
       buttonLabel="Score Vendors"
     />
   );

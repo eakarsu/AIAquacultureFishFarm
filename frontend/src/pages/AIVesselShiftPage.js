@@ -12,7 +12,7 @@ export default function AIVesselShiftPage() {
         { key: 'window', label: 'Window',  placeholder: 'e.g. 2026-05-18 to 2026-05-24' },
         { key: 'notes',  label: 'Tasks / context', type: 'textarea', placeholder: 'Treatment runs, feed deliveries, harvests, net cleaning...' },
       ]}
-      run={(v) => aiVesselShiftSchedule({ window: v.window, notes: v.notes })}
+      run={(v, requestOptions) => aiVesselShiftSchedule({ window: v.window, notes: v.notes }, requestOptions)}
       buttonLabel="Build Shift Plan"
     />
   );

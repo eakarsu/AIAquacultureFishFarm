@@ -12,7 +12,7 @@ export default function AIHarvestSchedulePage() {
         { key: 'window',      label: 'Window',      placeholder: 'e.g. Next 30 days' },
         { key: 'constraints', label: 'Constraints', type: 'textarea', placeholder: 'Vessel availability, processor capacity, market timing...' },
       ]}
-      run={(v) => aiHarvestSchedule({ window: v.window, constraints: v.constraints })}
+      run={(v, requestOptions) => aiHarvestSchedule({ window: v.window, constraints: v.constraints }, requestOptions)}
       buttonLabel="Build Schedule"
     />
   );

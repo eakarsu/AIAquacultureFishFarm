@@ -11,7 +11,7 @@ export default function AIFeedConversionPage() {
       inputs={[
         { key: 'notes', label: 'Context', type: 'textarea', placeholder: 'Site, target FCR, environmental notes...' },
       ]}
-      run={(v) => aiFeedConversionOptimize({ notes: v.notes })}
+      run={(v, requestOptions) => aiFeedConversionOptimize({ notes: v.notes }, requestOptions)}
       buttonLabel="Optimize FCR"
     />
   );

@@ -13,7 +13,7 @@ export default function AIBiomassVisionPage() {
         { key: 'method', label: 'Method', type: 'select', options: ['stereo_vision','sonar','hybrid','manual_sample'] },
         { key: 'notes',  label: 'Notes', type: 'textarea', placeholder: 'Observation context, sample size, calibration notes...' },
       ]}
-      run={(v) => aiBiomassVisionEstimate({ pen_id: v.pen_id, method: v.method, notes: v.notes })}
+      run={(v, requestOptions) => aiBiomassVisionEstimate({ pen_id: v.pen_id, method: v.method, notes: v.notes }, requestOptions)}
       buttonLabel="Estimate Biomass"
     />
   );

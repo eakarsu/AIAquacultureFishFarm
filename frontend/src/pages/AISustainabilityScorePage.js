@@ -12,7 +12,7 @@ export default function AISustainabilityScorePage() {
         { key: 'farm_id', label: 'Farm ID (optional - leave blank for all farms)', placeholder: 'e.g. FRM-NOR-001' },
         { key: 'notes',   label: 'Notes', type: 'textarea' },
       ]}
-      run={(v) => aiSustainabilityScore({ farm_id: v.farm_id, notes: v.notes })}
+      run={(v, requestOptions) => aiSustainabilityScore({ farm_id: v.farm_id, notes: v.notes }, requestOptions)}
       buttonLabel="Score Sustainability"
     />
   );

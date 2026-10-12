@@ -13,7 +13,7 @@ export default function AIMarketPriceForecastPage() {
         { key: 'horizon_weeks',  label: 'Horizon (weeks)', type: 'number', defaultValue: 12 },
         { key: 'notes',          label: 'Context',         type: 'textarea', placeholder: 'Baseline price, supply/demand drivers, hedging context...' },
       ]}
-      run={(v) => aiMarketPriceForecast({ species: v.species, horizon_weeks: Number(v.horizon_weeks) || 12, notes: v.notes })}
+      run={(v, requestOptions) => aiMarketPriceForecast({ species: v.species, horizon_weeks: Number(v.horizon_weeks) || 12, notes: v.notes }, requestOptions)}
       buttonLabel="Forecast Price"
     />
   );

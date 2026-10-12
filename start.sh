@@ -9,7 +9,7 @@ if [ -f "$demo_credentials_project_dir/.env" ]; then
     demo_credentials_key="${demo_credentials_line%%=*}"
     demo_credentials_value="${demo_credentials_line#*=}"
     case "$demo_credentials_key" in
-      NODE_ENV|ENABLE_DEMO_CREDENTIAL_AUTOFILL|DEMO_EMAIL|DEMO_PASSWORD|SEED_ADMIN_EMAIL|SEED_ADMIN_PASSWORD|SEED_USER_EMAIL|SEED_USER_PASSWORD|PROVISION_ADMIN_EMAIL|PROVISION_ADMIN_PASSWORD|BOOTSTRAP_ADMIN_EMAIL|BOOTSTRAP_ADMIN_PASSWORD|ADMIN_EMAIL|ADMIN_PASSWORD|DEFAULT_EMAIL|DEFAULT_PASSWORD|DEMO_TENANT|BOOTSTRAP_TENANT_SLUG|GOVERNANCE_TENANT_ID|TENANT_ID) ;;
+      NODE_ENV|ENABLE_DEMO_CREDENTIAL_AUTOFILL|DEMO_EMAIL|DEMO_PASSWORD|DEMO_ADMIN_PASSWORD|SEED_ADMIN_EMAIL|SEED_ADMIN_PASSWORD|SEED_USER_EMAIL|SEED_USER_PASSWORD|PROVISION_ADMIN_EMAIL|PROVISION_ADMIN_PASSWORD|BOOTSTRAP_ADMIN_EMAIL|BOOTSTRAP_ADMIN_PASSWORD|ADMIN_EMAIL|ADMIN_PASSWORD|DEFAULT_EMAIL|DEFAULT_PASSWORD|DEMO_TENANT|BOOTSTRAP_TENANT_SLUG|GOVERNANCE_TENANT_ID|TENANT_ID) ;;
       *) continue ;;
     esac
     [ -n "${!demo_credentials_key+x}" ] && continue
@@ -38,6 +38,9 @@ elif [ -n "${SEED_ADMIN_EMAIL:-}" ] && [ -n "${SEED_ADMIN_PASSWORD:-}" ]; then
 elif [ -n "${SEED_USER_EMAIL:-}" ] && [ -n "${SEED_USER_PASSWORD:-}" ]; then
   demo_credentials_email="$SEED_USER_EMAIL"
   demo_credentials_password="$SEED_USER_PASSWORD"
+elif [ -n "${DEMO_ADMIN_PASSWORD:-}" ]; then
+  demo_credentials_email="admin@aquafarm.io"
+  demo_credentials_password="$DEMO_ADMIN_PASSWORD"
 elif [ -n "${DEMO_EMAIL:-}" ] && [ -n "${DEMO_PASSWORD:-}" ]; then
   demo_credentials_email="$DEMO_EMAIL"
   demo_credentials_password="$DEMO_PASSWORD"

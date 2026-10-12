@@ -134,32 +134,32 @@ export const login = (email, password) =>
 export const getMe = () => request('/auth/me');
 
 // 16 AI verbs
-export const aiBiomassVisionEstimate = (body) => request('/ai/biomass-vision-estimate', { method: 'POST', body: JSON.stringify(body || {}) });
-export const aiSeaLiceCountsClassify = (body) => request('/ai/sea-lice-counts-classify', { method: 'POST', body: JSON.stringify(body || {}) });
-export const aiFeedConversionOptimize= (body) => request('/ai/feed-conversion-optimize',  { method: 'POST', body: JSON.stringify(body || {}) });
-export const aiMortalityAnomalyDetect= (body) => request('/ai/mortality-anomaly-detect',  { method: 'POST', body: JSON.stringify(body || {}) });
-export const aiTreatmentRecommend    = (body) => request('/ai/treatment-recommend',       { method: 'POST', body: JSON.stringify(body || {}) });
-export const aiExecutiveBrief        = (body) => request('/ai/executive-brief',           { method: 'POST', body: JSON.stringify(body || {}) });
-export const aiHarvestSchedule       = (body) => request('/ai/harvest-schedule',          { method: 'POST', body: JSON.stringify(body || {}) });
-export const aiWaterQualityAnomaly   = (body) => request('/ai/water-quality-anomaly',     { method: 'POST', body: JSON.stringify(body || {}) });
-export const aiPredatorDeterrentPlan = (body) => request('/ai/predator-deterrent-plan',   { method: 'POST', body: JSON.stringify(body || {}) });
-export const aiEnvironmentalRiskBrief= (body) => request('/ai/environmental-risk-brief',  { method: 'POST', body: JSON.stringify(body || {}) });
-export const aiVesselShiftSchedule   = (body) => request('/ai/vessel-shift-schedule',     { method: 'POST', body: JSON.stringify(body || {}) });
-export const aiDiverSafetyBrief      = (body) => request('/ai/diver-safety-brief',        { method: 'POST', body: JSON.stringify(body || {}) });
-export const aiCustomerQualityReport = (body) => request('/ai/customer-quality-report',   { method: 'POST', body: JSON.stringify(body || {}) });
-export const aiCertificationReadiness= (body) => request('/ai/certification-readiness',   { method: 'POST', body: JSON.stringify(body || {}) });
-export const aiVendorQualityScore    = (body) => request('/ai/vendor-quality-score',      { method: 'POST', body: JSON.stringify(body || {}) });
-export const aiMarketPriceForecast   = (body) => request('/ai/market-price-forecast',     { method: 'POST', body: JSON.stringify(body || {}) });
+export const aiBiomassVisionEstimate = (body, options = {}) => request('/ai/biomass-vision-estimate', { ...options, method: 'POST', body: JSON.stringify(body || {}) });
+export const aiSeaLiceCountsClassify = (body, options = {}) => request('/ai/sea-lice-counts-classify', { ...options, method: 'POST', body: JSON.stringify(body || {}) });
+export const aiFeedConversionOptimize= (body, options = {}) => request('/ai/feed-conversion-optimize',  { ...options, method: 'POST', body: JSON.stringify(body || {}) });
+export const aiMortalityAnomalyDetect= (body, options = {}) => request('/ai/mortality-anomaly-detect',  { ...options, method: 'POST', body: JSON.stringify(body || {}) });
+export const aiTreatmentRecommend    = (body, options = {}) => request('/ai/treatment-recommend',       { ...options, method: 'POST', body: JSON.stringify(body || {}) });
+export const aiExecutiveBrief        = (body, options = {}) => request('/ai/executive-brief',           { ...options, method: 'POST', body: JSON.stringify(body || {}) });
+export const aiHarvestSchedule       = (body, options = {}) => request('/ai/harvest-schedule',          { ...options, method: 'POST', body: JSON.stringify(body || {}) });
+export const aiWaterQualityAnomaly   = (body, options = {}) => request('/ai/water-quality-anomaly',     { ...options, method: 'POST', body: JSON.stringify(body || {}) });
+export const aiPredatorDeterrentPlan = (body, options = {}) => request('/ai/predator-deterrent-plan',   { ...options, method: 'POST', body: JSON.stringify(body || {}) });
+export const aiEnvironmentalRiskBrief= (body, options = {}) => request('/ai/environmental-risk-brief',  { ...options, method: 'POST', body: JSON.stringify(body || {}) });
+export const aiVesselShiftSchedule   = (body, options = {}) => request('/ai/vessel-shift-schedule',     { ...options, method: 'POST', body: JSON.stringify(body || {}) });
+export const aiDiverSafetyBrief      = (body, options = {}) => request('/ai/diver-safety-brief',        { ...options, method: 'POST', body: JSON.stringify(body || {}) });
+export const aiCustomerQualityReport = (body, options = {}) => request('/ai/customer-quality-report',   { ...options, method: 'POST', body: JSON.stringify(body || {}) });
+export const aiCertificationReadiness= (body, options = {}) => request('/ai/certification-readiness',   { ...options, method: 'POST', body: JSON.stringify(body || {}) });
+export const aiVendorQualityScore    = (body, options = {}) => request('/ai/vendor-quality-score',      { ...options, method: 'POST', body: JSON.stringify(body || {}) });
+export const aiMarketPriceForecast   = (body, options = {}) => request('/ai/market-price-forecast',     { ...options, method: 'POST', body: JSON.stringify(body || {}) });
 
 // Apply pass 7 - backlog AI endpoints
-export const aiFishHealthDiagnostic  = (body) => request('/ai/fish-health-diagnostic',    { method: 'POST', body: JSON.stringify(body || {}) });
-export const aiBiomassForecast       = (body) => request('/ai/biomass-forecast',          { method: 'POST', body: JSON.stringify(body || {}) });
-export const aiHarvestTiming         = (body) => request('/ai/harvest-timing',            { method: 'POST', body: JSON.stringify(body || {}) });
-export const aiMortalityPredict      = (body) => request('/ai/mortality-predict',         { method: 'POST', body: JSON.stringify(body || {}) });
-export const aiSustainabilityScore   = (body) => request('/ai/sustainability-score',      { method: 'POST', body: JSON.stringify(body || {}) });
-export const aiPenCameraAnalyze      = (body) => request('/ai/pen-camera-analyze',        { method: 'POST', body: JSON.stringify(body || {}) });
-export const aiEscapeDetect          = (body) => request('/ai/escape-detect',             { method: 'POST', body: JSON.stringify(body || {}) });
-export const aiStockingDensityRisk   = (body) => request('/ai/stocking-density-risk',     { method: 'POST', body: JSON.stringify(body || {}) });
+export const aiFishHealthDiagnostic  = (body, options = {}) => request('/ai/fish-health-diagnostic',    { ...options, method: 'POST', body: JSON.stringify(body || {}) });
+export const aiBiomassForecast       = (body, options = {}) => request('/ai/biomass-forecast',          { ...options, method: 'POST', body: JSON.stringify(body || {}) });
+export const aiHarvestTiming         = (body, options = {}) => request('/ai/harvest-timing',            { ...options, method: 'POST', body: JSON.stringify(body || {}) });
+export const aiMortalityPredict      = (body, options = {}) => request('/ai/mortality-predict',         { ...options, method: 'POST', body: JSON.stringify(body || {}) });
+export const aiSustainabilityScore   = (body, options = {}) => request('/ai/sustainability-score',      { ...options, method: 'POST', body: JSON.stringify(body || {}) });
+export const aiPenCameraAnalyze      = (body, options = {}) => request('/ai/pen-camera-analyze',        { ...options, method: 'POST', body: JSON.stringify(body || {}) });
+export const aiEscapeDetect          = (body, options = {}) => request('/ai/escape-detect',             { ...options, method: 'POST', body: JSON.stringify(body || {}) });
+export const aiStockingDensityRisk   = (body, options = {}) => request('/ai/stocking-density-risk',     { ...options, method: 'POST', body: JSON.stringify(body || {}) });
 
 // Sensor batch ingest (water quality)
 export const ingestWaterQuality = (body) => request('/water-quality/ingest', { method: 'POST', body: JSON.stringify(body || {}) });

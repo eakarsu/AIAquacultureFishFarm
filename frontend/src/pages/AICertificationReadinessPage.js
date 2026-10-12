@@ -11,7 +11,7 @@ export default function AICertificationReadinessPage() {
       inputs={[
         { key: 'notes', label: 'Optional focus / context', type: 'textarea', placeholder: 'e.g. Focus on lapsed ASC at Macquarie Harbour.' },
       ]}
-      run={(v) => aiCertificationReadiness({ notes: v.notes })}
+      run={(v, requestOptions) => aiCertificationReadiness({ notes: v.notes }, requestOptions)}
       buttonLabel="Score Readiness"
     />
   );
